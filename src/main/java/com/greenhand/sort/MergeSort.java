@@ -35,9 +35,7 @@ public class MergeSort implements Sort{
         while (index2 <= right) {
             result[index++] = source[index2++];
         }
-        if (result.length >= 0) {
-            System.arraycopy(result, 0, source, left, result.length);
-        }
+        System.arraycopy(result, 0, source, left, result.length);
     }
     /**
      * 递归调用

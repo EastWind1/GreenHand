@@ -1,4 +1,9 @@
-.idea
-*.iml
-target
 .DS_Store
+.idea
+.settings
+.out
+target
+.classpath
+.factorypath
+.project
+*.iml

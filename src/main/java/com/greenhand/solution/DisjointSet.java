@@ -4,7 +4,9 @@ package com.greenhand.solution;
  * 并查集
  */
 public class DisjointSet {
+    /** 父节点 */
     private final int[] parent;
+    /** 当前节点层级（秩），用于合并时优化查找层级 */
     private final int[] rank;
     public DisjointSet(int count) {
         this.parent = new int[count];

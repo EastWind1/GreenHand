@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class BubbleSort implements Sort{
     @Override
     public int[] sort(int[] source) {
+        boolean hasSwitch = false;
         for (int i = 0; i < source.length -1; i++) {
             for (int j = 0; j < source.length - i-1; j++) {
                 if (source[j] > source[j + 1]) {

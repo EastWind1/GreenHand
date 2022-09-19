@@ -12,17 +12,18 @@ public class ListNode {
         this.next = next;
     }
 
-    static ListNode buildFromArray(int[] arrays) {
-        ListNode preHead = new ListNode(0);
-        ListNode pre = preHead;
-        for (int array : arrays) {
-            ListNode cur = new ListNode(array);
-            pre.next = cur;
-            pre = cur;
+    ListNode(int[] arrays) {
+        if (arrays.length == 0) {
+            throw new RuntimeException("Array cannot be empty.");
         }
-        return preHead.next;
+        this.val = arrays[0];
+        ListNode pre = this;
+        for (int i = 1; i < arrays.length; i++) {
+            ListNode next= new ListNode(arrays[i]);
+            pre.next = next;
+            pre = next;
+        }
     }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

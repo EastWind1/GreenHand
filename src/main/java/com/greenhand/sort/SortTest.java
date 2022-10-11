@@ -24,7 +24,7 @@ public class SortTest implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Random random = new Random();
-        int[] source = new int[10000];
+        int[] source = new int[10];
         for (int i = 0; i < source.length; i++) {
             source[i] = random.nextInt(100);
         }

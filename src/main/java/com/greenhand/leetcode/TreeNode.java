@@ -1,4 +1,4 @@
-package com.greenhand.solution;
+package com.greenhand.leetcode;
 
 import java.util.ArrayDeque;
 import java.util.Queue;

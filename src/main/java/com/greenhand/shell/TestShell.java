@@ -2,7 +2,6 @@ package com.greenhand.shell;
 
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
-import org.springframework.shell.standard.ShellOption;
 
 @ShellComponent
 public class TestShell {

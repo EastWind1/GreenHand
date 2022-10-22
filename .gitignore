@@ -7,3 +7,4 @@ target
 .factorypath
 .project
 *.iml
+spring-shell.log

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
  * 快速排序
  */
 @Component
-public class QuickSort implements Sort{
+public class QuickSort implements Sort {
     @Override
     public int[] sort(int[] source) {
         quickSort(source, 0, source.length - 1);
@@ -23,8 +23,8 @@ public class QuickSort implements Sort{
                 right--;
             }
             source[left] = source[right];
-            while (left< right && source[left] <= base) {
-                left ++;
+            while (left < right && source[left] <= base) {
+                left++;
             }
             source[right] = source[left];
         }

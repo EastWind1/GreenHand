@@ -32,9 +32,12 @@ public class FindShortPath {
             // 标记为已确定
             visit[min] = true;
             // 尝试用经过该点的路径更新其他点的最短路径
-            for (int j = 0; j < map.length; j++) {
-                if (!visit[j] && map[min][j] != Integer.MAX_VALUE) {
-                    res[j] = Math.min(res[j], res[min] + map[min][j]);
+            // 若没有路径，跳过
+            if (res[min] != Integer.MAX_VALUE) {
+                for (int j = 0; j < map.length; j++) {
+                    if (!visit[j] && map[min][j] != Integer.MAX_VALUE) {
+                        res[j] = Math.min(res[j], res[min] + map[min][j]);
+                    }
                 }
             }
         }

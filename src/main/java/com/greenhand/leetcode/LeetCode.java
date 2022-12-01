@@ -2,7 +2,9 @@ package com.greenhand.leetcode;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 /**
  * Leetcode测试类
@@ -16,8 +18,8 @@ public class LeetCode {
 
         log.info(String.valueOf(
                 method.invoke(solution,
-                        (Object) "abcabcbb"
-                      )));
+                        (Object) Arrays.asList("un","iq","ue")
+                )));
         log.info("cast {}ms", System.currentTimeMillis() - start);
     }
 }

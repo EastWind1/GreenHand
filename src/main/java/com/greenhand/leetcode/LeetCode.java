@@ -19,7 +19,7 @@ public class LeetCode {
 
         log.info(String.valueOf(
                 method.invoke(solution,
-                        (Object)new ListNode(new int[]{1,2,3,4,5}),2,4
+                        (Object)new TreeNode(new Integer[]{1953828,5321214,35213,45213,5512,null,41436,53157,13568,null, null, 413419,null, null, 153210,154261})
 
                 )
         ));

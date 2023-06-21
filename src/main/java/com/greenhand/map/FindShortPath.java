@@ -89,10 +89,9 @@ public class FindShortPath {
      * Floyd-Warshall算法
      * 
      * @param map   图临接矩阵
-     * @param start 起始点
      * @return 任意两点间的最短距离
      */
-    public int[][] floydWarshall(int[][] map, int start) {
+    public int[][] floydWarshall(int[][] map) {
         // 克隆map
         int[][] res = new int[map.length][map.length];
         for (int i = 0; i < res.length; i++) {
@@ -104,7 +103,7 @@ public class FindShortPath {
         for (int k = 0; k < map.length; k++) {
             for (int i = 0; i < map.length; i++) {
                 for (int j = 0; j < map.length; j++) {
-                    if (res[i][k] != Integer.MAX_VALUE && res[k][j] != Integer.MAX_VALUE
+                    if (i != j && res[i][k] != Integer.MAX_VALUE && res[k][j] != Integer.MAX_VALUE
                             && res[i][j] > res[i][k] + res[k][j]) {
                         res[i][j] = res[i][k] + res[k][j];
                     }

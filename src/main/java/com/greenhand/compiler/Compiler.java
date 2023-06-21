@@ -15,10 +15,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Compiler {
-    private final JavaCompiler compiler;
+    private final JavaCompiler javaCompiler;
 
     public Compiler() {
-        this.compiler = ToolProvider.getSystemJavaCompiler();
+        this.javaCompiler = ToolProvider.getSystemJavaCompiler();
     }
 
     public Object run(String source, String className, Iterable<Object> constructParams, String method, Object... args) {
@@ -44,7 +44,7 @@ public class Compiler {
     }
 
     private void compiler(Path path) {
-        compiler.run(null, null, null, path.toString());
+        javaCompiler.run(null, null, null, path.toString());
 
     }
 

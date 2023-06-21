@@ -28,14 +28,14 @@ public class SortTest implements CommandLineRunner {
         for (int i = 0; i < source.length; i++) {
             source[i] = random.nextInt(100);
         }
-        log.debug("origin arrays: " + arrayToString(source));
-        sortList.forEach(sort -> {
+        // log.debug("origin arrays: " + arrayToString(source));
+        for (Sort sort : sortList) {
             int[] copy = Arrays.copyOf(source, source.length);
             long start = System.currentTimeMillis();
             int[] result = sort.sort(copy);
             log.info(sort.getClass().getSimpleName() + " cast {}ms", System.currentTimeMillis() - start);
-            log.debug(sort.getClass().getSimpleName() + " sort result: " + arrayToString(result));
-        });
+            // log.debug(sort.getClass().getSimpleName() + " sort result: " + arrayToString(result));
+        }
     }
 
     private String arrayToString(int[] arrays) {

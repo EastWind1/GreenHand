@@ -3,12 +3,12 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.5</version>
+        <version>3.1.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.example</groupId>
+    <groupId>com.greenhand</groupId>
     <artifactId>leetcode</artifactId>
     <version>0.1.0-SNAPSHOT</version>
 
@@ -30,7 +30,7 @@
         <dependency>
             <groupId>org.springframework.shell</groupId>
             <artifactId>spring-shell-starter</artifactId>
-            <version>2.1.1</version>
+            <version>2.1.4</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -39,10 +39,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.yaml</groupId>
-            <artifactId>snakeyaml</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -56,9 +53,41 @@
 
     <build>
         <plugins>
+            <!-- 打包可执行Jar -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 若使用-Dloader.path指定依赖路径时，必须指定为ZIP -->
+                    <layout>ZIP</layout>
+                    <includes>
+                        <!-- 指定打包的依赖，若不包含依赖，则设为不存在的artifactId -->
+                        <include>
+                            <groupId>nothing</groupId>
+                            <artifactId>nothing</artifactId>
+                        </include>
+                    </includes>
+                </configuration>
+            </plugin>
+            <!-- 拷贝依赖的jar包到lib目录 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <!-- ${project.build.directory}是maven变量，内置的，表示target目录,如果不写，将在跟目录下创建/lib -->
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            <!-- excludeTransitive:是否不包含间接依赖包，比如我们依赖A，但是A又依赖了B，我们是否也要把B打进去 默认不打-->
+                            <excludeTransitive>false</excludeTransitive>
+                            <!-- 复制的jar文件去掉版本信息 true去掉 false 不去-->
+                            <stripVersion>false</stripVersion>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

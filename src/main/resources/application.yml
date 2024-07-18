@@ -2,3 +2,8 @@ logging:
   level:
     root: info
     com.greenhand.sort.SortTest: debug
+spring:
+  shell:
+    command:
+      history:
+        enabled: false

@@ -1,11 +1,10 @@
 package com.greenhand.leetcode;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StopWatch;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Leetcode测试类
@@ -15,15 +14,15 @@ public class LeetCode {
     public static void main(String[] args) throws Exception {
         Solution solution = new Solution();
         Method method = solution.getClass().getMethods()[0];
-        long start = System.currentTimeMillis();
+        StopWatch watch = new StopWatch();
+        watch.start();
+        Object result =  method.invoke(solution,
+                (Object) 3,new int[][]{{0,1,2},{1,2,1},{0,2,4}}, new int[] {1,1,5}
 
-        log.info(String.valueOf(
-                method.invoke(solution,
-                        (Object)new TreeNode(new Integer[]{1953828,5321214,35213,45213,5512,null,41436,53157,13568,null, null, 413419,null, null, 153210,154261})
+        );
+        watch.stop();
+        log.info(String.valueOf(result));
+        log.info("cast {}ms", watch.getTotalTimeMillis());
 
-                )
-        ));
-        log.info("cast {}ms", System.currentTimeMillis() - start);
     }
-
 }

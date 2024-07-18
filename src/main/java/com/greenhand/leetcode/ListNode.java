@@ -23,19 +23,4 @@ public class ListNode {
             pre = next;
         }
     }
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        ListNode index = this;
-        while (index != null) {
-            sb.append(index.val);
-            sb.append(",");
-            index = index.next;
-        }
-        sb.deleteCharAt(sb.length()-1);
-        sb.append("]");
-        return sb.toString();
-    }
-
 }

@@ -17,7 +17,7 @@ public class LeetCode {
         StopWatch watch = new StopWatch();
         watch.start();
         Object result =  method.invoke(solution,
-                (Object) 3,new int[][]{{0,1,2},{1,2,1},{0,2,4}}, new int[] {1,1,5}
+                (Object)new int[][]{{2,1,1},{2,3,1},{3,4,1}}, 4,2
 
         );
         watch.stop();

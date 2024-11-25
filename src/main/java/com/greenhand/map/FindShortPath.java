@@ -99,7 +99,7 @@ public class FindShortPath {
         for (int i = 0; i < n - 1; i++) {
             // 是否有更新，若没有，则证明所有可达的点的最短距离已计算
             boolean hasUpdate = false;
-            //
+
             for (int[] edge : edges) {
                 // 尝试用当前边更新到该点的最短距离
                 if (res[edge[0]] != Integer.MAX_VALUE && res[edge[1]] > res[edge[0]] + edge[2]) {
@@ -111,6 +111,50 @@ public class FindShortPath {
                 break;
             }
         }
+        return res;
+    }
+    /**
+     * SPFA算法，对Bellman-Ford进行优化
+     * 思路为每次遍历更新的点相连的边，而不是遍历所有边
+     *
+     * 与Dijkstra区别，可解决负权值的问题
+     *
+     * @param map 图临接矩阵
+     * @param n     点数量
+     * @param start 起始点
+     * @return 到各点的最短路径距离
+     */
+    public int[] spfa(int[][] map, int n, int start) {
+        // 到某点的最短路径长度
+        int[] dist = new int[n];
+        // 除起点外初始化为最大
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        dist[start] = 0;
+
+        // 已更新点的队列
+        Deque<Integer> queue = new ArrayDeque<>();
+        // 点是否已经入队
+        boolean[] isInQueue = new boolean[n];
+        queue.add(start);
+        isInQueue[start] = true;
+
+        while (!queue.isEmpty()) {
+            int cur = queue.poll();
+
+            for (int i = 0; i < n; i++) {
+                // 松弛操作
+                if (map[cur][i] != -1 && dist[i] > dist[cur] + map[cur][i]) {
+                    dist[i] = dist[cur] + map[cur][i];
+                    // 若未在队列中则入队
+                    if (!isInQueue[i]) {
+                        queue.add(i);
+                        isInQueue[i] = true;
+                    }
+                }
+            }
+            isInQueue[start] = false;
+        }
+
         /*
          * 判断负环
          * for (int[] edge : edges) {
@@ -119,7 +163,7 @@ public class FindShortPath {
          * }
          * }
          */
-        return res;
+        return dist;
     }
 
     /**
